@@ -8,10 +8,10 @@
  * so do NOT split behaviors/combos/macros out into keymap_features/ here.
  *
  * Trackball input-listener config is deliberately NOT defined in this file.
- * It lives at the shield level (boards/shields/*/*.overlay defines
+ * It lives at the shield level (each shield overlay defines
  * trackball_listener; config/trackball/charybdis_pointer.dtsi sets its
  * input-processors) because the listener device differs per build target
- * (&trackball on the BT central, &trackball_split on the dongle central).
+ * (trackball on the BT central, trackball_split on the dongle central).
  */
 
 #include <behaviors.dtsi>
