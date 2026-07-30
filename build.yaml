@@ -18,7 +18,7 @@ include:
       - charybdis_left_bt
       - charybdis_right_bt
     keymap:
-      - qwerty
+      - charybdis
       - colemak_dh
       # - canary
       # - focal
@@ -32,7 +32,7 @@ include:
       - charybdis_right_dongle
       - charybdis_dongle
     keymap:
-      - qwerty
+      - charybdis
       - colemak_dh
       # - canary
       # - focal
@@ -61,7 +61,7 @@ include:
   - name: dongle_prospector_nano_no_sensor
     board: nice_nano//zmk
     keymap:
-      - qwerty
+      - charybdis
       - colemak_dh
       # - canary
     builds:
@@ -79,7 +79,7 @@ include:
   - name: dongle_prospector_nano_sensor
     board: nice_nano//zmk
     keymap:
-      - qwerty
+      - charybdis
       - colemak_dh
       # - canary
     builds:
@@ -95,7 +95,7 @@ include:
   - name: dongle_prospector_xiao_no_sensor
     board: xiao_ble//zmk
     keymap:
-      - qwerty
+      - charybdis
       - colemak_dh
       # - canary
     builds:
@@ -115,7 +115,7 @@ include:
   - name: dongle_prospector_xiao_sensor
     board: xiao_ble//zmk
     keymap:
-      - qwerty
+      - charybdis
       - colemak_dh
       # - canary
     builds:
