@@ -1,63 +1,86 @@
 #include <physical_layouts.dtsi>
 
+/*
+ * Charybdis Full (4x6, 56-key) physical layout.
+ *
+ * Key order matches default_transform's map (charybdis_common/charybdis.dtsi):
+ * number row first (electrical row 4), then TAB / ESC / LGUI main rows
+ * (electrical rows 0/1/2), then the 8-key thumb cluster (electrical row 3).
+ */
+
 / {
     charybdis_physical_layout: charybdis_physical_layout {
         compatible = "zmk,physical-layout";
-        display-name = "Charybdis 3x6";
-        status = "okay";
+        display-name = "Charybdis 4x6";
         kscan = <&kscan0>;
         transform = <&default_transform>;
 
-        keys
-            // Left Half - Main Keys
-            //                       w   h    x    y     rot    rx    ry
-            = <&key_physical_attrs 100 100    0   38       0     0     0>
+        keys  //                     w   h    x    y     rot    rx    ry
+            // ── Number row (electrical row 4, sits above main grid) ──
+            = <&key_physical_attrs 100 100    0  (-62)     0     0     0>
+            , <&key_physical_attrs 100 100  100  (-62)     0     0     0>
+            , <&key_physical_attrs 100 100  200  (-88)     0     0     0>
+            , <&key_physical_attrs 100 100  300 (-100)     0     0     0>
+            , <&key_physical_attrs 100 100  400  (-88)     0     0     0>
+            , <&key_physical_attrs 100 100  500  (-75)     0     0     0>
+            , <&key_physical_attrs 100 100  900  (-75)     0     0     0>
+            , <&key_physical_attrs 100 100 1000  (-88)     0     0     0>
+            , <&key_physical_attrs 100 100 1100 (-100)     0     0     0>
+            , <&key_physical_attrs 100 100 1200  (-88)     0     0     0>
+            , <&key_physical_attrs 100 100 1300  (-62)     0     0     0>
+            , <&key_physical_attrs 100 100 1400  (-62)     0     0     0>
+            // ── TAB row (electrical row 0) ──
+            , <&key_physical_attrs 100 100    0   38       0     0     0>
             , <&key_physical_attrs 100 100  100   38       0     0     0>
             , <&key_physical_attrs 100 100  200   12       0     0     0>
             , <&key_physical_attrs 100 100  300    0       0     0     0>
             , <&key_physical_attrs 100 100  400   12       0     0     0>
-            , <&key_physical_attrs 100 100  500   12       0     0     0>
-            , <&key_physical_attrs 100 100  900   12       0     0     0>
+            , <&key_physical_attrs 100 100  500   25       0     0     0>
+            , <&key_physical_attrs 100 100  900   25       0     0     0>
             , <&key_physical_attrs 100 100 1000   12       0     0     0>
             , <&key_physical_attrs 100 100 1100    0       0     0     0>
             , <&key_physical_attrs 100 100 1200   12       0     0     0>
             , <&key_physical_attrs 100 100 1300   38       0     0     0>
             , <&key_physical_attrs 100 100 1400   38       0     0     0>
+            // ── ESC row (electrical row 1) ──
             , <&key_physical_attrs 100 100    0  138       0     0     0>
             , <&key_physical_attrs 100 100  100  138       0     0     0>
             , <&key_physical_attrs 100 100  200  112       0     0     0>
             , <&key_physical_attrs 100 100  300  100       0     0     0>
             , <&key_physical_attrs 100 100  400  112       0     0     0>
-            , <&key_physical_attrs 100 100  500  112       0     0     0>
-
-            // Right Half - Main Keys
-            //                       w   h    x    y     rot    rx    ry
-            , <&key_physical_attrs 100 100  900  112       0     0     0>
+            , <&key_physical_attrs 100 100  500  125       0     0     0>
+            , <&key_physical_attrs 100 100  900  125       0     0     0>
             , <&key_physical_attrs 100 100 1000  112       0     0     0>
             , <&key_physical_attrs 100 100 1100  100       0     0     0>
             , <&key_physical_attrs 100 100 1200  112       0     0     0>
             , <&key_physical_attrs 100 100 1300  138       0     0     0>
             , <&key_physical_attrs 100 100 1400  138       0     0     0>
+            // ── LGUI/Z row (electrical row 2) ──
             , <&key_physical_attrs 100 100    0  238       0     0     0>
             , <&key_physical_attrs 100 100  100  238       0     0     0>
             , <&key_physical_attrs 100 100  200  212       0     0     0>
             , <&key_physical_attrs 100 100  300  200       0     0     0>
             , <&key_physical_attrs 100 100  400  212       0     0     0>
-            , <&key_physical_attrs 100 100  500  212       0     0     0>
-            , <&key_physical_attrs 100 100  900  212       0     0     0>
+            , <&key_physical_attrs 100 100  500  225       0     0     0>
+            , <&key_physical_attrs 100 100  900  225       0     0     0>
             , <&key_physical_attrs 100 100 1000  212       0     0     0>
             , <&key_physical_attrs 100 100 1100  200       0     0     0>
             , <&key_physical_attrs 100 100 1200  212       0     0     0>
             , <&key_physical_attrs 100 100 1300  238       0     0     0>
             , <&key_physical_attrs 100 100 1400  238       0     0     0>
-
-            // Thumb Clusters
-            //                       w   h    x    y     rot    rx    ry
-            , <&key_physical_attrs 100 100  348  314       0     0     0>
-            , <&key_physical_attrs 100 100  348  314    1500   398   790>
-            , <&key_physical_attrs 100 100  348  320    3000   398   790>
-            , <&key_physical_attrs 100 100 1052  320 (-3000)  1102   790>
-            , <&key_physical_attrs 100 100 1052  314 (-1500)  1102   790>
+            // ── Thumb cluster (electrical row 3, outer row long: 5L / 3R) ──
+            //    Left outer (3): T1 T2 T3
+            , <&key_physical_attrs 100 100  300  300       0     0     0>
+            , <&key_physical_attrs 100 100  400  310    1500   398   764>
+            , <&key_physical_attrs 100 100  500  320    3000   398   764>
+            //    Left inner (2): T4 T5
+            , <&key_physical_attrs 100 100  380  400    1500   398   864>
+            , <&key_physical_attrs 100 100  480  410    3000   398   864>
+            //    Right outer (2): T6 T7
+            , <&key_physical_attrs 100 100  900  320 (-3000)  1102   764>
+            , <&key_physical_attrs 100 100 1000  310 (-1500)  1102   764>
+            //    Right inner (1): T8
+            , <&key_physical_attrs 100 100  920  410 (-3000)  1102   864>
             ;
     };
 };

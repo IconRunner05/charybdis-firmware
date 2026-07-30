@@ -5,9 +5,10 @@
     /* base processor chain on all layers */
     input-processors = <&zip_xy_scaler 5 5>;
 
-    /* layer-8 scroll override */
+    /* scroll override: layer 5 = SCROLL on the flat `charybdis` keymap,
+       layer 7 = SCROLL on the 8-layer keymaps (qwerty/colemak_dh) */
     scroller: scroller {
-        layers           = <7>;
+        layers           = <5 7>;
         input-processors = <
             &zip_xy_scaler 1 15                              // Scales the scroll speed
             &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
