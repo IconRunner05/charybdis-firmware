@@ -2,14 +2,20 @@
 #include <dt-bindings/zmk/input_transform.h>
 
 &trackball_listener {
-    /* base processor chain on all layers */
-    input-processors = <&zip_xy_scaler 5 5>;
+    /* base processor chain on all layers — 0.5x scaler matches reference
+     * master's pointer speed so the trackball feels identical to the
+     * previously-flashed firmware. (The reference also puts a
+     * zip_ble_report_rate_limit noise-gate first, but that input processor
+     * doesn't exist in this repo's ZMK revision; the scaler is the part that
+     * governs perceptible speed.) */
+    input-processors = <&zip_xy_scaler 1 2>;
 
-    /* layer-8 scroll override */
+    /* scroll override — layer 5 (reference SCROLL) and layer 7 (this repo's
+     * other keymaps' SCROLL) both scroll. */
     scroller: scroller {
-        layers           = <7>;
+        layers           = <5 7>;
         input-processors = <
-            &zip_xy_scaler 1 15                              // Scales the scroll speed
+            &zip_xy_scaler 1 20                              // Scales the scroll speed
             &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
             &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
         >;
