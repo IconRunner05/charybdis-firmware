@@ -424,11 +424,6 @@ for entry_json in "${build_entries[@]}"; do
           # Loop over every keymap
           for entry_keymap in "${build_keymaps[@]}"; do
             keymap_path="$NEW_CONFIG_PATH/keymaps/${entry_keymap}.keymap"
-            # Fall back to a config-root keymap (e.g. config/charybdis.keymap,
-            # kept at the root so the keymap-editor web app can find it).
-            if [ ! -f "$keymap_path" ]; then
-              keymap_path="$NEW_CONFIG_PATH/${entry_keymap}.keymap"
-            fi
 
             # Copy the keymap named after the shield so ZMK's cmake finds it by exact match.
             cp "$keymap_path" "$NEW_CONFIG_PATH/${target}.keymap"
